@@ -12,6 +12,10 @@ services:
             - 8080:8080
         volumes:
             - $PWD/conf.php:/srv/cfg/conf.php:ro
+            - $PWD/favion.ico:/var/www/img/favicon.ico:ro
+            - $PWD/icon.svg:/var/www/img/icon.svg:ro
+            - $PWD/favicon-16x16.png:/var/www/img/favicon-16x16.png:ro
+            - $PWD/favicon-32x32.png:/var/www/img/favicon-32x32.png:ro
         image: privatebin/nginx-fpm-alpine
         depends_on:
           - postgres
