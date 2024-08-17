@@ -3,7 +3,7 @@ services:
     nginx-fpm-alpine:
         container_name: bin
         restart: always
-        read_only: false
+        read_only: true
         environment:
           - PUID=1000
           - PGID=1000
@@ -12,7 +12,7 @@ services:
             - 8080:8080
         volumes:
             - $PWD/conf.php:/srv/cfg/conf.php:ro
-            - $PWD/favion.ico:/var/www/img/favicon.ico:ro
+            - $PWD/favicon.ico:/var/www/img/favicon.ico:ro
             - $PWD/icon.svg:/var/www/img/icon.svg:ro
             - $PWD/favicon-16x16.png:/var/www/img/favicon-16x16.png:ro
             - $PWD/favicon-32x32.png:/var/www/img/favicon-32x32.png:ro
