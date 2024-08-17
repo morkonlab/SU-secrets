@@ -1,0 +1,32 @@
+name: privatebin
+services:
+    nginx-fpm-alpine:
+        container_name: bin
+        restart: always
+        read_only: false
+        environment:
+          - PUID=1000
+          - PGID=1000
+          - TZ=Europe/Amsterdam
+        ports:
+            - 8080:8080
+        volumes:
+            - $PWD/conf.php:/srv/cfg/conf.php:ro
+        image: privatebin/nginx-fpm-alpine
+        depends_on:
+          - postgres
+    postgres:
+        container_name: bin-db
+        restart: unless-stopped
+        environment:
+          POSTGRES_USER: privatebin
+          POSTGRES_PASSWORD: 
+          POSTGRES_DB: privatebin
+        ports:
+            - 5342:5342
+        volumes:
+            - postgres-data:/var/lib/postgresql/data
+        image: postgres
+
+volumes:
+  postgres-data:
