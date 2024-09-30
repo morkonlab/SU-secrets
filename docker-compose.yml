@@ -16,7 +16,7 @@ services:
             - $PWD/icon.svg:/var/www/img/icon.svg:ro
             - $PWD/favicon-16x16.png:/var/www/img/favicon-16x16.png:ro
             - $PWD/favicon-32x32.png:/var/www/img/favicon-32x32.png:ro
-        image: privatebin/nginx-fpm-alpine
+        image: privatebin/nginx-fpm-alpine:1.7.4
         depends_on:
           - postgres
     postgres:
